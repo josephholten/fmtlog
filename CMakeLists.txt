@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 
 project(fmtlog CXX)
 
+option(FMTLOG_TEST "test fmtlog" OFF)
+
 if(MSVC)
     add_compile_options(/std:c++latest)
 else()
@@ -28,4 +30,6 @@ endif()
 install(TARGETS fmtlog-static)
 
 add_subdirectory(fmt)
-add_subdirectory(test)
+if (FMTLOG_BUILD_TESTS)
+  add_subdirectory(test)
+endif()
